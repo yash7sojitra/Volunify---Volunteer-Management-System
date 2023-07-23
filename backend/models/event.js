@@ -30,12 +30,21 @@ const eventSchema = mongoose.Schema(
       required: true,
       ref: "Organizer",
     },
+    volunteers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Volunteer",
+        unique: true,
+        sparse: true,
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
 
+eventSchema.index({ volunteers: 1 });
 const Event = mongoose.model("Event", eventSchema);
 
 module.exports = Event;

@@ -53,4 +53,26 @@ router.get("/organizers/me", auth, async (req, res) => {
   res.send(req.organizer);
 });
 
+//Update Organizer info
+router.patch("/organizers/me", auth, async (req, res) => {
+  const updates = Object.keys(req.body);
+  const allowedUpdates = ["name", "email", "password"];
+
+  const isValidOpeartion = updates.every((update) => {
+    return allowedUpdates.includes(update);
+  });
+
+  if (!isValidOpeartion) {
+    return res.status(400).send({ error: "Invalid updates!" });
+  }
+
+  try {
+    updates.forEach((update) => (req.organizer[update] = req.body[update]));
+    await req.organizer.save();
+    res.send(req.organizer);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
 module.exports = router;

@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bycrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const Event = require("./event");
 
 const organizerSchema = mongoose.Schema(
   {
@@ -85,6 +84,7 @@ organizerSchema.methods.generateAuthToken = async function () {
   return token;
 };
 
+//removing the password and tokens from the organizer object when sending to client
 organizerSchema.methods.toJSON = function () {
   const organizer = this;
   const organizerObject = organizer.toObject();
