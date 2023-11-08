@@ -17,8 +17,8 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar w-full h-1/10 bg-black bg-opacity-30 flex items-center justify-end border-l-white">
-      <div className="w-1/2 flex h-full justify-end">
+    <div className="navbar w-full h-1/10 bg-transparent bg-opacity-30 flex items-center justify-end border-l-white ">
+      <div className="w-1/2 flex h-full justify-end m-5">
         <div className="w-2/5 flex justify-around h-full items-center">
           {loggedIn && (
             <>

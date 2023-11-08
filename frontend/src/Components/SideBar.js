@@ -5,8 +5,8 @@ import { useGlobalContext } from "./store/GlobalContext";
 const SideBar = () => {
   const { userRole } = useGlobalContext();
   return (
-    <div className="h-full w-1/5 bg-black flex flex-col justify-between pb-10 ">
-      <div>
+    <div className="h-full w-1/5 bg-app-black flex flex-col justify-between pb-10 bg-gradient-to-b from-emerald-800 via-transparent ">
+      <div className="m-5 bg-app-black rounded-lg h-full">
         {/* This div is for logo */}
         <div className="logoDiv p-6 flex items-center  space-x-2 w-28">
           <img src={volunify_logo} alt="volunify logo" />
